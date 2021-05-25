@@ -73,7 +73,7 @@ namespace SloppyBird
                 
                }
 
-                if ((string)x.Tag == "cloud")
+                if ((string)x.Tag == "cloud") // Samma sak som med tuberna ovan fast för målnen så att målnen rör sig mot fågeln i en viss hastighet (1) och sen på vilken position.
                 {
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - 1);
 
@@ -96,7 +96,7 @@ namespace SloppyBird
                 gravity = -8; // IStället för att fågeln rör sig neråt så rör den sig uppåt.
             }
 
-            if (e.Key == Key.R && gameover == true) // Startar om spelet.
+            if (e.Key == Key.R && gameover == true) // Om man trycker på R så startas spelet om och då körs start-game.
             {
                 StartGame();
             }
