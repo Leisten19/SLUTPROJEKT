@@ -24,7 +24,7 @@ namespace SloppyBird
     {
         DispatcherTimer gameTimer = new DispatcherTimer();
 
-        double score;   
+        double score;   // Är en double eftersom det finns två stycken pipes och man får poängen från att man åker igenom dem.
         int gravity = 8;
         bool gameover;
         Rect flappyBirdHitBox; //Recten är som en variabel som deffinerar om man har nuddat ett obejekt. Och innehåller höjden och bredden på fågeln.
@@ -43,14 +43,14 @@ namespace SloppyBird
 
             flappyBirdHitBox = new Rect(Canvas.GetLeft(flappyBird), Canvas.GetTop(flappyBird), flappyBird.Width, flappyBird.Height);
 
-            Canvas.SetTop(flappyBird, Canvas.GetTop(flappyBird) + gravity);
+            Canvas.SetTop(flappyBird, Canvas.GetTop(flappyBird) + gravity); // Gravity funktionen gör så att fågeln faller ner om man inte trycker eller håller in space-baren
 
-            if (Canvas.GetTop(flappyBird) < -10 || Canvas.GetTop(flappyBird) > 458)
+            if (Canvas.GetTop(flappyBird) < -10 || Canvas.GetTop(flappyBird) > 458) // Om fågeln rör sig för lågt i fönstret så avslutas spelet.
             {
                 EndGame();
             }
 
-            foreach (var x in MyCanvas.Children.OfType<Image>())
+            foreach (var x in MyCanvas.Children.OfType<Image>()) // Foreach-loopen gör så att tuberna åker in med en viss hastighet samt håller ett visst avstånd imellan dem tre.
             {
                 if ((string)x.Tag == "obs1" || (string)x.Tag == "obs2" || ((string)x.Tag == "obs3"));
                 {
@@ -64,7 +64,7 @@ namespace SloppyBird
 
                     }
 
-                    Rect pipeHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+                    Rect pipeHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height); // En sats som håller koll på om fågeln har nuddat tuberna och om det är så körs end-game funktionen.
 
                     if (flappyBirdHitBox.IntersectsWith(pipeHitBox)) ;
                     {
